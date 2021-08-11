@@ -5,6 +5,7 @@ namespace Mvc;
 use Mvc\Controller\UserController;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy as Collector;
 use Slim\App;
 
 class Routes
@@ -17,12 +18,16 @@ class Routes
       return $response;
     });
 
-    $app->get("/api/v1/users", [UserController::class, "list"]);
+    $app->group("/api/v1/users", function (Collector $group) {
+      $group->get("", [UserController::class, "list"]);
 
-    $app->post("/api/v1/users", [UserController::class, "create"]);
+      $group->get("/{id}", [UserController::class, "show"]);
 
-    $app->put("/api/v1/users", [UserController::class, "update"]);
+      $group->post("", [UserController::class, "create"]);
 
-    $app->delete("/api/v1/users", [UserController::class, "destroy"]);
+      $group->put("/{id}", [UserController::class, "update"]);
+
+      $group->delete("/{id}", [UserController::class, "destroy"]);
+    });
   }
 }

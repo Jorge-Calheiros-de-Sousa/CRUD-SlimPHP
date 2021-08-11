@@ -17,11 +17,20 @@ class UserController extends BaseController
   }
 
   /**
-   * get all user and get a user by id
+   * get all user
    */
   public function list(Request $request, Response $response)
   {
-    $this->userModel->setId($this->get('ID'));
+    $data = $this->userModel->list();
+    return $this->jsonResponse($response, $data->fetchAll(\PDO::FETCH_ASSOC));
+  }
+
+  /**
+   * get a user by id
+   */
+  public function show(Request $request, Response $response, array $args)
+  {
+    $this->userModel->setId($args["id"]);
     $data = $this->userModel->list();
     return $this->jsonResponse($response, $data->fetchAll(\PDO::FETCH_ASSOC));
   }
@@ -43,12 +52,12 @@ class UserController extends BaseController
   /**
    * update user data
    */
-  public function update(Request $request, Response $response)
+  public function update(Request $request, Response $response, array $args)
   {
     $updated = $this->userModel
       ->setName($this->request($request, "Name"))
       ->setYearOld($this->request($request, "YearOld"))
-      ->setId($this->get("ID"))
+      ->setId($args["id"])
       ->update();
     if ($updated) {
       return $this->jsonResponse($response, null, 202);
@@ -58,10 +67,10 @@ class UserController extends BaseController
   /**
    * delete user data
    */
-  public function destroy(Request $request, Response $response)
+  public function destroy(Request $request, Response $response, array $args)
   {
     $deleted = $this->userModel
-      ->setId($this->get('ID'))
+      ->setId($args["id"])
       ->destroy();
     if ($deleted) {
       return $this->jsonResponse($response, null, 204);

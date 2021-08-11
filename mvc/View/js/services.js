@@ -1,9 +1,6 @@
 xhr = new XMLHttpRequest;
 function destroy(id) {
-  const params = {
-    ID: id
-  }
-  makeRequest(routes.users, 'delete', { params: params })
+  makeRequest(routes.users + "/" + id, 'delete')
     .then(function (response) {
       if (response.status == 204) {
         alert("Usuário excluido com sucesso");
@@ -14,10 +11,7 @@ function destroy(id) {
     })
 }
 function Getuser(id) {
-  const params = {
-    ID: id
-  }
-  makeRequest(routes.users, 'get', { params: params })
+  makeRequest(routes.users + "/" + id, 'get')
     .then(function (response) {
       change_input(response.data[0]);
     }).catch(function (response) {
@@ -61,7 +55,7 @@ function create(params) {
     })
 }
 function update(params, id) {
-  makeRequest(routes.users + "?ID=" + id, 'put', { data: params })
+  makeRequest(routes.users + "/" + id, 'put', { data: params })
     .then(function (response) {
       if (response.status == 202) {
         alert("Usuário editado com sucesso");

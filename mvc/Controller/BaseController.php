@@ -12,16 +12,8 @@ class BaseController
    */
   protected function request(Request $request, string $key)
   {
-    $json = json_decode($request->getBody());
-    return $json->$key;
-  }
-
-  /**
-   * Obter valores de verbo GET
-   */
-  protected function get(string $key): ?string
-  {
-    return isset($_GET[$key]) ? $_GET[$key] : null;
+    $json = $request->getParsedBody();
+    return $json[$key];
   }
 
   /**
@@ -30,9 +22,11 @@ class BaseController
   protected function jsonResponse(Response $response, $data = null, int $status = 200)
   {
     if ($data != null) {
-      $response->withHeader('Content-Type', 'application/json');
       $response->getBody()->write(json_encode($data));
+      $newResponse = $response->withHeader('Content-Type', 'application/json');
     }
-    return $response->withStatus($status);
+    $newResponse =  $response->withStatus($status);
+
+    return $newResponse;
   }
 }

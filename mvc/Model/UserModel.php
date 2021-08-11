@@ -4,7 +4,7 @@ namespace Mvc\Model;
 
 class UserModel extends BaseModel
 {
-  private ?int $id;
+  private ?int $id = null;
   private string $name;
   private int $yearOld;
 
