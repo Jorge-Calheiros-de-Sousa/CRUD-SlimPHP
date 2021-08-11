@@ -1,0 +1,16 @@
+{
+  "name": "jorge/mvc",
+  "autoload": {
+    "psr-4": {
+      "Mvc\\": "mvc/"
+    }
+  },
+  "require-dev": {
+    "nunomaduro/phpinsights": "^2.0"
+  },
+  "require": {
+    "vlucas/phpdotenv": "^5.3",
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.4"
+  }
+}

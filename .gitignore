@@ -1,0 +1,4 @@
+vendor/
+docker/
+.env
+mvc/View/js/routes.js
