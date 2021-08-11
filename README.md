@@ -55,7 +55,7 @@ Um CRUD simples feito a mão usando as seguintes tecnologias
 
     |Variavel  |Valor  |
     |---------|---------|
-    |DB_HOST     |app_db         |
+    |DB_HOST     |app_db_slim        |
     |DB_DATABASE    |dbusuarios         |
     |DB_USERNAME     |root         |
     |DB_PASSWORD     |123         |
