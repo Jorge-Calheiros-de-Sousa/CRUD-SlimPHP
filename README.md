@@ -66,8 +66,8 @@ Tecnologias usadas:
     |Nome  |Tipo  |Tamanho/Valores  |A_I(Auto_increment)  |
     |---------|---------|---------|---------|
     |id   |int         |         |check         |
-    |name_user     |varchar         |75         |         |
-    |yearOld_user     |varchar         |3         |         |
+    |name    |varchar         |75         |         |
+    |year_old     |varchar         |3         |         |
 
 - Clique em guardar e a tabela será criada
 - Pronto agora a aplicação já esta executando
