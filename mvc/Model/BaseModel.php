@@ -2,6 +2,8 @@
 
 namespace Mvc\Model;
 
+use RedBeanPHP\R;
+
 class BaseModel
 {
   private $pdo;
@@ -14,16 +16,9 @@ class BaseModel
       $_dbUsername = $_ENV['DB_USERNAME'];
       $_dbPassword = $_ENV['DB_PASSWORD'];
 
-      $this->pdo = new \PDO("mysql:host=$_dbHostname;
-        dbname=$_dbName;", $_dbUsername, $_dbPassword);
-      $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+      R::setup("mysql:host=$_dbHostname; dbname=$_dbName;", $_dbUsername, $_dbPassword);
     } catch (\Exception $e) {
       echo "Falha ao conectar: " . $e->getMessage();
     }
-  }
-
-  public function returnConnection()
-  {
-    return $this->pdo;
   }
 }

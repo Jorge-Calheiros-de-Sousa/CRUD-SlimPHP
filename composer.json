@@ -11,6 +11,8 @@
   "require": {
     "vlucas/phpdotenv": "^5.3",
     "slim/slim": "4.*",
-    "slim/psr7": "^1.4"
+    "slim/psr7": "^1.4",
+    "slim/twig-view": "3.0",
+    "gabordemooij/redbean": "^5.7"
   }
 }

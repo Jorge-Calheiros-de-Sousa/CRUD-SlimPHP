@@ -22,7 +22,7 @@ class UserController extends BaseController
   public function list(Request $request, Response $response)
   {
     $data = $this->userModel->list();
-    return $this->jsonResponse($response, $data->fetchAll(\PDO::FETCH_ASSOC));
+    return $this->jsonResponse($response, $data);
   }
 
   /**
@@ -32,7 +32,7 @@ class UserController extends BaseController
   {
     $this->userModel->setId($args["id"]);
     $data = $this->userModel->list();
-    return $this->jsonResponse($response, $data->fetchAll(\PDO::FETCH_ASSOC));
+    return $this->jsonResponse($response, $data);
   }
 
   /**

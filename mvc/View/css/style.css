@@ -5,119 +5,148 @@
 body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+  background: linear-gradient(to right, #6955CB 50%, #B152C3 80%);
 }
-header{
-  background-color: #009879;
-  color: white;
+.title{
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  height: 70px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 150px;
-  margin-bottom: 50px;
+  color: white;
+  font-family: serif;
+  font-size: 20px;
 }
-.conteudo{
-  width: 100%;
-  height: fit-content;
-  background-color: #EEEEEE;
-}
-.conteudo div.box{
-  display: inline-block;
-  vertical-align: top;
-  width: 45%;
-  padding: 10px;
-  margin-left: 2%;
-}
-/*FORMULARIO*/
-.conteudo form{
+.form_container{
   background-color: white;
-  width: 50%;
-  margin-left: 25%;
-  padding: 10px;
   border-radius: 5px;
+  width: 70%;
+  margin-top: 5%;
+  margin-left: 15%;
+  height: 500px;
 }
-.conteudo form h1{
+.form_container .container{
+  width: 80%;
+  margin-left:10%;
+  display:flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 100%;
+}
+.form_container .container figure{
+  width: 50%;
+  height: 80%;
+  margin-top: 5%;
+}
+.form_container  .container figure img{
+  width: 100%;
+}
+.form_container .container form{
+  width: 40%;
+  margin-top: 10%;
+}
+.form_container .container form .titulo{
+  font-size: 10px;
   text-align: center;
-  margin-bottom: 20px;
-  font-size: 25px;
+  margin-bottom: 10%;
 }
-.conteudo form div{
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 50px;
-  height: fit-content;
-}
-.conteudo form div input{
-  padding: 10px;
-  background-color: #E8E8E8;
-  border: 0;
+.form_container .container form input{
   width: 90%;
-  margin-left: 2%;
-}
-.conteudo form div label{
-  margin-left: 2%;
-}
-.conteudo form div input.submit{
+  height: 50px;
+  background-color: #E6E6E6;
+  border-radius: 25px;
+  margin-bottom: 5%;
   border: 0;
-  background-color: cornflowerblue;
-  color: white;
-  width: 95%;
-  margin-left: 2%;
-  cursor: pointer;
+  outline: none;
+  border:  1px solid white;
+  padding: 0 0 0 10%;
+  transition:  background 100ms linear;
+}
+.form_container .container form input:focus{
+  border:  1px solid black;
+}
+.form_container .container form .submit input{
+  width: 100%;
+  padding: 0;
   transition: background 100ms linear;
-}
-.conteudo form div input.submit:hover{
-  background-color: rgb(18, 87, 214);
-}
-/*TABELA*/
-.styled-table {
-  border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.9em;
-  font-family: sans-serif;
-  width: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-.styled-table thead tr {
-  background-color: #009879;
-  color: #ffffff;
-  text-align: left;
-}
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid #009879;
-}
-.styled-table button{
-  width: 90%;
-  margin-left: 5%;
-  border: 0;
+  font-size: 16px;
+  background-color: #57B846;
   color: white;
   cursor: pointer;
 }
-.styled-table button.ex{
-  background-color: rgb(231, 66, 66);
+.form_container .container form .submit input:hover{
+  background-color: #333333;
 }
-.styled-table button.ex:hover{
-  background-color: rgb(224, 101, 101);
+.form_container .container form .list_registros button{
+ height: 50px;
+ border-radius: 25px;
+ border: 0;
+ padding: 0 10px 0 10px;
+ cursor: pointer;
+ background-color: #6955CB;
+ transition: background 100ms linear;
+ color: white;
 }
-.styled-table button.ex:active{
-  background-color: rgb(197, 29, 29);
-}
-.styled-table button.edit{
-  background-color: #009879;
-}
-.styled-table button.edit:hover{
-  background-color: #06b390;
-}
-.styled-table button.edit:active{
-  background-color: #025343;
+.form_container .container form .list_registros button:hover{
+  background-color: #B253C4;
 }
 
-.display{
-  display: none;
+/*LIST*/
+div.list{
+  background-color: white;
+  border-radius: 5px;
+  width: 70%;
+  margin-left: 15%;
+  height: 80%;
+  overflow-y: auto;
+}
+.list table{
+  width: 100%;
+  border-collapse: collapse;
+}
+.list td {
+  text-align: center;
+}
+.list th, td {
+  padding: 15px;
+}
+.list th, td {
+  border-bottom: 1px solid #ddd;
+}
+.list button{
+  width: 80%;
+  height: 30px;
+  border-radius: 25px;
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  transition: background 100ms linear;
+}
+.list button.edit{
+  background-color: #57B846;
+}
+.list button.edit:hover{
+  background-color: #333333;
+}
+.list button.ex{
+  background-color: #b64f4f;
+}
+.list button.ex:hover{
+  background-color: #333333;
+}
+
+/*AVISO*/
+
+.notfound{
+  text-align: center;
+  width: 100%;
+}
+.notfound div{
+  margin-bottom: 5%;
+}
+.notfound figure img{
+  width: 30%;
 }

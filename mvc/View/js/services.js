@@ -29,8 +29,8 @@ window.onload = function list() {
           var array = JSON.parse(xhr.responseText);
           for (let i = 0; i < array.length; i++) {
             tr = document.createElement("tr");
-            tds.InserTD_name(tr, array[i]['name_user']);
-            tds.InserTD_year(tr, array[i]['yearOld_user']);
+            tds.InserTD_name(tr, array[i]['name']);
+            tds.InserTD_year(tr, array[i]['year_old']);
             tds.InserTD_btn(tr, array[i]['id']);
             tb.appendChild(tr);
           }
@@ -49,7 +49,7 @@ function create(params) {
       if (response.status == 201) {
         alert("Usuário cadastrado com sucesso");
       }
-      window.location.reload(1);
+      window.location.reload(1)
     }).catch(function () {
       console.log("erro");
     })
@@ -60,7 +60,7 @@ function update(params, id) {
       if (response.status == 202) {
         alert("Usuário editado com sucesso");
       }
-      window.location.reload(1);
+      window.location.reload(1)
     }).catch(function () {
       console.log("erro");
     })

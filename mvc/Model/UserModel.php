@@ -2,6 +2,8 @@
 
 namespace Mvc\Model;
 
+use RedBeanPHP\R;
+
 class UserModel extends BaseModel
 {
   private ?int $id = null;
@@ -47,13 +49,11 @@ class UserModel extends BaseModel
    */
   public function create(): bool
   {
-    $pdo = $this->returnConnection();
+    $user = R::dispense("tbusuarios");
+    $user->name = $this->name;
+    $user->year_old = $this->yearOld;
 
-    $insert = $pdo->prepare("insert into TbUsuarios (name_user,yearOld_user) values(:name,:yearOld)");
-    $insert->bindParam(':name', $this->name);
-    $insert->bindParam(':yearOld', $this->yearOld);
-
-    return ($insert->execute() ? true : false);
+    return R::store($user) > 0;
   }
 
   /**
@@ -62,14 +62,11 @@ class UserModel extends BaseModel
    */
   public function update(): bool
   {
-    $pdo = $this->returnConnection();
+    $user = R::load("tbusuarios", $this->id);
+    $user->name = $this->name;
+    $user->year_old = $this->yearOld;
 
-    $up = $pdo->prepare("UPDATE TbUsuarios set name_user = :name_user, yearOld_user= :yearOld  where id=:id");
-    $up->bindParam(":name_user", $this->name);
-    $up->bindParam(":yearOld", $this->yearOld);
-    $up->bindParam(":id", $this->id);
-
-    return ($up->execute() ? true : false);
+    return R::store($user) > 0;
   }
 
   /**
@@ -78,12 +75,9 @@ class UserModel extends BaseModel
    */
   public function destroy(): bool
   {
-    $pdo = $this->returnConnection();
-
-    $del = $pdo->prepare("delete from TbUsuarios where id = :id");
-    $del->bindValue(":id", $this->id);
-
-    return ($del->execute() ? true : false);
+    $user = R::load("tbusuarios", $this->id);
+    R::trash($user);
+    return true;
   }
 
   /**
@@ -91,12 +85,8 @@ class UserModel extends BaseModel
    */
   public function list()
   {
-    $pdo = $this->returnConnection();
-
-    $where = $this->id ? " where id=" . $this->id : "";
-
-    $sql = $pdo->prepare("select * from TbUsuarios" . $where);
-
-    return ($sql->execute() ? $sql : false);
+    $where = $this->id ? " WHERE id = :ID" : "";
+    $binds = $this->id ? [":ID" => $this->id] : [];
+    return R::beansToArray(R::findAll("tbusuarios", $where, $binds));
   }
 }

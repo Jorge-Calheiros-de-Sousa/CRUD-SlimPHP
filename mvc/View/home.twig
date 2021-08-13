@@ -1,0 +1,36 @@
+{% extends "layouts/default.twig"  %}
+
+{% block content %}
+<div class="container">
+  <form action="#" id="form" method="post" onsubmit="return validation('c',0)">
+    <div class="titulo">
+      <h1 id='title'>Cadastrar usuario</h1>
+    </div>
+    <div>
+      <input type="text" name="name" id="name" autocomplete="off" placeholder="Digite seu nome" maxlength="30">
+    </div>
+    <div>
+      <input type="number" name="year" id="year" autocomplete="off" placeholder="Digite sua idade" min="1"
+        max="120">
+    </div>
+    <div class="submit">
+      <input type="submit" value="Enviar" class="submit" id='submit'>
+    </div>
+  </form>
+  <div class="list">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Idade</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
+      <tbody id='tb'>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

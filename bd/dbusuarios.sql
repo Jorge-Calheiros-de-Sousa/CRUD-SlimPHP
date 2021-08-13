@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `tbusuarios` (
   `id` int NOT NULL,
-  `name_user` varchar(75) DEFAULT NULL,
-  `yearOld_user` varchar(3) DEFAULT NULL
+  `name` varchar(75) DEFAULT NULL,
+  `year_old` varchar(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

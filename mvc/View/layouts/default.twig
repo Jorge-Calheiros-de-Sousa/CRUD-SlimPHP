@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD</title>
+  <link rel="stylesheet" href="/mvc/View/css/style.css">
+  <script src="/mvc/View/js/elements.js"></script>
+  <script src="/mvc/View/js/routes.js"></script>
+  <script src="/mvc/View/js/api.js"></script>
+  <script src="/mvc/View/js/form.js"></script>
+  <script src="/mvc/View/js/services.js"></script>
+</head>
+
+<body>
+  <div class = "title">
+    <h1>Slim PHP</h1>
+  </div>
+  <div class="form_container">
+    {% block content %} {% endblock %}
+  </div>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
+
+</html>

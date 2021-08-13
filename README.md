@@ -1,9 +1,9 @@
 
 <img src="https://www.luiztools.com.br/wp-content/uploads/2017/07/CRUD.png" alt="">
 
-# Sistema de CRUD
+# Sistema de CRUD com Slim PHP
 
-Um CRUD simples feito a mão usando as seguintes tecnologias
+Tecnologias usadas: 
 
 - Xampp
 - Docker
@@ -92,4 +92,7 @@ Apos inicializar o docker basta acessar a url [http://localhost:8001/](http://lo
 |docker-compose start     | executa o container        |
 |docker-compose stop     | para o container        |
 |docker ps    |mostra todos os containers executados no momento         |
+
+
+## Em desenvolvimento
 
