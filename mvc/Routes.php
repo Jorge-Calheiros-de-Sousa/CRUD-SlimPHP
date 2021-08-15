@@ -14,10 +14,27 @@ class Routes
 {
   public static function init(App $app)
   {
+    $app->get("/CRUD-SlimPHP/", function (Request $request, Response $response) {
+      $twig = Twig::fromRequest($request);
+      return $twig->render($response, 'home.twig', ['baseURL' => $_ENV['APP_URL']]);
+    });
+
     $app->get("/", function (Request $request, Response $response) {
       $twig = Twig::fromRequest($request);
-      return $twig->render($response, 'home.twig');
+      return $twig->render($response, 'home.twig',  ['baseURL' => $_ENV['APP_URL']]);
     });
+
+    $app->group("/CRUD-SlimPHP/api/v1/users", function (Collector $group) {
+      $group->post("", [UserController::class, "create"]);
+
+      $group->get("/{id}", [UserController::class, "show"]);
+
+      $group->put("/{id}", [UserController::class, "update"]);
+
+      $group->get("", [UserController::class, "list"]);
+
+      $group->delete("/{id}", [UserController::class, "destroy"]);
+    })->add(new CustomErrorHandler());
 
     $app->group("/api/v1/users", function (Collector $group) {
       $group->post("", [UserController::class, "create"]);

@@ -84,6 +84,25 @@ Tecnologias usadas:
 
 Apos inicializar o docker basta acessar a url [http://localhost:8001/](http://localhost:8001/) para acessar a aplicação CRUD.
 
+## Observações
+
+Quando copiar o arquivo .env.example e renomear para .env deve se preencher algumas das seguintes variaveis do ambiente
+
+
+|Variavel |Valor  |
+|---------|---------|
+|APP_ENV   |DEV ou PROD        |
+|APP_URL     |(coloque a URL da aplicação)|
+
+A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.
+
+As possibilidades desse variavel são: 
+
+"DEV": Ambiente de desenvolvimento
+
+"PROD": Ambiente de produção
+
+
 ## Comandos do docker
 
 |Comando |Descrição |
