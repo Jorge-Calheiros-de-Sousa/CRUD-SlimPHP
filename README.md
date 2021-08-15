@@ -26,12 +26,14 @@ Tecnologias usadas:
 - Crie o banco de dados MySQL de acordo com o arquivo `dbusuarios.sql`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
    
-    |Variavel  |Valor  |
+    |Variável  |Valor |
     |---------|---------|
-    |DB_HOST    |localhost       |
-    |DB_DATABASE    |dbusuarios       |
+    |DB_HOST    |localhost         |
+    |DB_DATABASE     |dbusuarios         |
     |DB_USERNAME     |root         |
-    |DB_PASSWORD    |''         |
+    |DB_PASSWORD     |''         |
+    |APP_URL     |(coloque a URL da aplicação)         |
+
 - E agora é só usar a aplicação
 
 ------
@@ -51,14 +53,15 @@ Tecnologias usadas:
 - Mude o nome do arquivo `routes.example.js` para `routes.js`
 - Execute o comando `docker-compose up -d`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
-
-
-    |Variavel  |Valor  |
+    
+    |Variável  |Valor |
     |---------|---------|
-    |DB_HOST     |app_db_slim        |
-    |DB_DATABASE    |dbusuarios         |
+    |DB_HOST     |app_db_slim         |
+    |DB_DATABASE     |dbusuarios         |
     |DB_USERNAME     |root         |
     |DB_PASSWORD     |123         |
+    |APP_URL     |(coloque a URL da aplicação)         |
+
 - Crie o banco de dados acessando o phpmyadmin por [http://localhost:8000](http://localhost:8000) e insira as informações `Ultilizador: root` e `Senha: 123`
 - Em dbusuarios crie uma tabela chamada `tbusuarios` com 3 colunas e depois insira as informações abaixo:
 
@@ -89,10 +92,10 @@ Apos inicializar o docker basta acessar a url [http://localhost:8001/](http://lo
 Quando copiar o arquivo .env.example e renomear para .env deve se preencher algumas das seguintes variaveis do ambiente
 
 
-|Variavel |Valor  |
+|Variável |Valor  |
 |---------|---------|
-|APP_ENV   |DEV ou PROD        |
-|APP_URL     |(coloque a URL da aplicação)|
+|APP_ENV     |DEV ou PROD         |
+
 
 A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.
 
