@@ -3,7 +3,7 @@
 use Dotenv\Dotenv;
 use Slim\Factory\AppFactory;
 use Slim\Views\Twig;
-use Mvc\Routes;
+use Mvc\Routes\Router;
 use Slim\Views\TwigMiddleware;
 
 require __DIR__ . '/vendor/autoload.php';
@@ -21,5 +21,5 @@ $app->addErrorMiddleware(true, true, true);
 $app->addBodyParsingMiddleware();
 
 
-Routes::init($app);
+Router::init($app);
 $app->run();

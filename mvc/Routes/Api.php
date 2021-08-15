@@ -1,29 +1,16 @@
 <?php
 
-namespace Mvc;
+namespace mvc\Routes;
 
 use Mvc\Controller\UserController;
 use Mvc\Middleware\CustomErrorHandler;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy as Collector;
 use Slim\App;
-use Slim\Views\Twig;
 
-class Routes
+class Api
 {
   public static function init(App $app)
   {
-    $app->get("/CRUD-SlimPHP/", function (Request $request, Response $response) {
-      $twig = Twig::fromRequest($request);
-      return $twig->render($response, 'home.twig', ['baseURL' => $_ENV['APP_URL']]);
-    });
-
-    $app->get("/", function (Request $request, Response $response) {
-      $twig = Twig::fromRequest($request);
-      return $twig->render($response, 'home.twig',  ['baseURL' => $_ENV['APP_URL']]);
-    });
-
     $app->group("/CRUD-SlimPHP/api/v1/users", function (Collector $group) {
       $group->post("", [UserController::class, "create"]);
 
@@ -47,10 +34,5 @@ class Routes
 
       $group->delete("/{id}", [UserController::class, "destroy"]);
     })->add(new CustomErrorHandler());
-
-    $app->any("{route:.*}", function (Request $request, Response $response) {
-      $twing = Twig::fromRequest($request);
-      return $twing->render($response, 'error404.twig');
-    });
   }
 }
