@@ -1,4 +1,4 @@
 vendor/
 docker/
 .env
-mvc/View/js/routes.js
+mvc/View/assets/js/routes.js
