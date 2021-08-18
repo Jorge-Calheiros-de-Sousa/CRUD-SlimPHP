@@ -23,6 +23,7 @@ Tecnologias usadas:
 - Execute o comando `composer update` e aguarde o fim da instalação
 - Copiar o arquivo `env.example` e mudar o nome para `.env`
 - Copiar o arquivo  `routes.example.js` e mudar o nome para `routes.js`
+- Dentro do arquivo `routes.js` insira na variavel url a URL da aplicação
 - Crie o banco de dados MySQL de acordo com o arquivo `dbusuarios.sql`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
    
@@ -51,6 +52,7 @@ Tecnologias usadas:
 - Execute o comando `composer update`
 - Mude o nome do arquivo `env.example` para `.env`
 - Mude o nome do arquivo `routes.example.js` para `routes.js`
+- Dentro do arquivo `routes.js` insira na variavel url a URL da aplicação
 - Execute o comando `docker-compose up -d`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
     
