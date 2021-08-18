@@ -2,6 +2,7 @@
 
 namespace mvc\Routes;
 
+use DI\Container;
 use Slim\App;
 use Mvc\Routes\Api;
 use Mvc\Routes\Web;
@@ -26,9 +27,9 @@ class Router
     /**
      * Geral routes
      */
-    $app->any("{route:.*}", function (Request $request, Response $response) {
-      $twig = Twig::fromRequest($request);
-      return $twig->render($response, "error404.twig");
+    $app->any("{route:.*}", function (Response $response, Container $container) {
+      $twig = $container->get("error");
+      return $twig->render($response, "error404.twig", ['baseURL' => $_ENV['APP_URL']]);
     });
   }
 }

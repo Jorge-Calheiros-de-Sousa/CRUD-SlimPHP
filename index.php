@@ -1,21 +1,19 @@
 <?php
 
+use DI\Bridge\Slim\Bridge as AppFactoryBrige;
+use DI\Container;
 use Dotenv\Dotenv;
-use Slim\Factory\AppFactory;
-use Slim\Views\Twig;
 use Mvc\Routes\Router;
-use Slim\Views\TwigMiddleware;
 use Mvc\Middleware\Kernel;
+use Mvc\Utils\AppContainers;
 
 require __DIR__ . '/vendor/autoload.php';
 
 Dotenv::createImmutable(__DIR__)->load();
 
-$app = AppFactory::create();
-
-//Twig
-$twig = Twig::create(__DIR__ . '/mvc/View');
-$app->add(TwigMiddleware::create($app, $twig));
+$container = new Container();
+$app = AppFactoryBrige::create($container);
+AppContainers::init($container);
 
 //Global middleware
 Kernel::init($app);
