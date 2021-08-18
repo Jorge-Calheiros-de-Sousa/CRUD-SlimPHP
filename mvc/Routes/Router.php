@@ -6,9 +6,7 @@ use DI\Container;
 use Slim\App;
 use Mvc\Routes\Api;
 use Mvc\Routes\Web;
-use Psr\http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
-use Slim\Views\Twig;
 
 class Router
 {

@@ -2,7 +2,7 @@
 
 namespace Mvc\Controller;
 
-
+use DI\Container;
 use Mvc\Model\UserModel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -14,6 +14,15 @@ class UserController extends BaseController
   public function __construct()
   {
     $this->userModel = new UserModel;
+  }
+
+  /**
+   * 
+   */
+  public static function render(Response $response, Container $container)
+  {
+    $twig = $container->get("view");
+    return $twig->render($response, "home.twig", ['baseURL' => $_ENV['APP_URL']]);
   }
 
   /**
