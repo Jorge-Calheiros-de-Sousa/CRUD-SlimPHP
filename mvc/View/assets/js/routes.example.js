@@ -1,4 +1,4 @@
-var url = window.location.href;
+var url = "URL";
 var host = url;
 
 function getRoutes() {
