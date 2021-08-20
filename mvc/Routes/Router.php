@@ -26,7 +26,7 @@ class Router
      * Geral routes
      */
     $app->any("{route:.*}", function (Response $response, Container $container) {
-      $twig = $container->get("error");
+      $twig = $container->get("view");
       return $twig->render($response, "error404.twig", ['baseURL' => $_ENV['APP_URL']]);
     });
   }

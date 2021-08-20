@@ -3,21 +3,23 @@
 namespace Mvc\Controller;
 
 use DI\Container;
-use Mvc\Model\UserModel;
+use Mvc\Repository\Contracts\UserRepositoryContracts;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 class UserController extends BaseController
 {
   private $userModel;
+  private UserRepositoryContracts $respository;
 
-  public function __construct()
+  public function __construct(Container $container, UserRepositoryContracts $respository)
   {
-    $this->userModel = new UserModel;
+    $this->userModel = $container->get("userModel");
+    $this->respository = $respository;
   }
 
   /**
-   * 
+   * render page.twig
    */
   public static function render(Response $response, Container $container)
   {
@@ -30,7 +32,7 @@ class UserController extends BaseController
    */
   public function list(Response $response)
   {
-    $data = $this->userModel->list();
+    $data = $this->respository->list();
     return $this->jsonResponse($response, $data);
   }
 
@@ -39,8 +41,7 @@ class UserController extends BaseController
    */
   public function show(Response $response, $id)
   {
-    $this->userModel->setId($id);
-    $data = $this->userModel->list();
+    $data = $this->respository->list($id);
     return $this->jsonResponse($response, $data);
   }
 
@@ -49,10 +50,10 @@ class UserController extends BaseController
    */
   public function create(Request $request, Response $response)
   {
-    $created = $this->userModel
+    $userModel = $this->userModel
       ->setName($this->request($request, "Name"))
-      ->setYearOld($this->request($request, "YearOld"))
-      ->create();
+      ->setYearOld($this->request($request, "YearOld"));
+    $created = $this->respository->create($userModel);
     if ($created) {
       return $this->jsonResponse($response, null, 201);
     }
@@ -63,11 +64,10 @@ class UserController extends BaseController
    */
   public function update(Request $request, Response $response, $id)
   {
-    $updated = $this->userModel
+    $userModel = $this->userModel
       ->setName($this->request($request, "Name"))
-      ->setYearOld($this->request($request, "YearOld"))
-      ->setId($id)
-      ->update();
+      ->setYearOld($this->request($request, "YearOld"));
+    $updated = $this->respository->update($id, $userModel);
     if ($updated) {
       return $this->jsonResponse($response, null, 202);
     }
@@ -78,9 +78,7 @@ class UserController extends BaseController
    */
   public function destroy(Response $response, $id)
   {
-    $deleted = $this->userModel
-      ->setId($id)
-      ->destroy();
+    $deleted = $this->respository->destroy($id);
     if ($deleted) {
       return $this->jsonResponse($response, null, 204);
     }
