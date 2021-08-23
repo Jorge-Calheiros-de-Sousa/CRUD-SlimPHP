@@ -27,13 +27,13 @@ Tecnologias usadas:
 - Crie o banco de dados MySQL de acordo com o arquivo `dbusuarios.sql`
 - Preencha as variaveis do arquivo `.env` de acordo com as intruções abaixo:
    
-    |Variável  |Valor |
+    
+    |Variável |Valor  |
     |---------|---------|
-    |DB_HOST    |localhost         |
-    |DB_DATABASE     |dbusuarios         |
-    |DB_USERNAME     |root         |
-    |DB_PASSWORD     |''         |
-    |APP_URL     |(coloque a URL da aplicação)         |
+    |DB_HOST    |localhost           |
+    |DB_DATABASE    |dbusuarios         |
+    |DB_USERNAME     |root          |
+    |DB_PASSWORD      |''         |
 
 - E agora é só usar a aplicação
 
@@ -62,7 +62,6 @@ Tecnologias usadas:
     |DB_DATABASE     |dbusuarios         |
     |DB_USERNAME     |root         |
     |DB_PASSWORD     |123         |
-    |APP_URL     |(coloque a URL da aplicação)         |
 
 - Crie o banco de dados acessando o phpmyadmin por [http://localhost:8000](http://localhost:8000) e insira as informações `Ultilizador: root` e `Senha: 123`
 - Em dbusuarios crie uma tabela chamada `tbusuarios` com 3 colunas e depois insira as informações abaixo:
@@ -94,19 +93,24 @@ Apos inicializar o docker basta acessar a url [http://localhost:8001/](http://lo
 Quando copiar o arquivo .env.example e renomear para .env deve se preencher algumas das seguintes variaveis do ambiente
 
 
-|Variável |Valor  |
+
+|Variável   |Valor |
 |---------|---------|
-|APP_ENV     |DEV ou PROD         |
+|APP_ENV     |DEV ou PROD            |
+|APP_URL     |(coloque a URL da aplicação)         |
+|APP_BASE_ROUTE     |(coloque a rota da aplicação)         |
 
 
-A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.
 
-As possibilidades desse variavel são: 
+- A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.
 
-"DEV": Ambiente de desenvolvimento
+    As possibilidades desse variavel são: 
+    
+    "DEV": Ambiente de desenvolvimento
+    
+    "PROD": Ambiente de produção
 
-"PROD": Ambiente de produção
-
+- Em APP_URL e APP_BASE_ROUTE é preciso colocar a rota e a url da aplicação porque certas funcionalidades dependem dessas informações na aplicação. Isso acontece porque o sistema támbem funciona no docker então quando ele é executado em docker a URL e a rota mudam então é preciso que o desenvolvedor insira a URL e a rota atual dependêndo de onde a aplicação está sendo executada. (Xampp ou Docker)
 
 ## Comandos do docker
 

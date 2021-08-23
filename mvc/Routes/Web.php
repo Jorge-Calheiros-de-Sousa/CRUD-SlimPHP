@@ -9,7 +9,7 @@ class Web
 {
   public static function init(App $app)
   {
-    $app->get("/CRUD-SlimPHP/", [UserController::class, "render"]);
-    $app->get("/", [UserController::class, "render"]);
+    $baseRoute = $_ENV["APP_BASE_ROUTE"];
+    $app->get($baseRoute, [UserController::class, "render"]);
   }
 }
