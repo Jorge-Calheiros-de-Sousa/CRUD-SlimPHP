@@ -2,6 +2,7 @@
 
 namespace Mvc\Controller;
 
+use Mvc\Enums\HttpStatus;
 use DI\Container;
 use Mvc\Repository\Contracts\UserRepositoryContracts;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -55,9 +56,9 @@ class UserController extends BaseController
       ->setYearOld($this->request($request, "YearOld"));
     $created = $this->respository->create($userModel);
     if ($created) {
-      return $this->jsonResponse($response, null, 201);
+      return $this->jsonResponse($response, null, HttpStatus::CREATED);
     }
-    return $this->jsonResponse($response, null, 500);
+    return $this->jsonResponse($response, null, HttpStatus::INTERNAL_SERVER_ERROR);
   }
 
   /**
@@ -70,10 +71,10 @@ class UserController extends BaseController
       ->setYearOld($this->request($request, "YearOld"));
     $updated = $this->respository->update($id, $userModel);
     if ($updated) {
-      return $this->jsonResponse($response, null, 202);
+      return $this->jsonResponse($response, null, HttpStatus::ACCEPTED);
     }
 
-    return $this->jsonResponse($response, null, 500);
+    return $this->jsonResponse($response, null, HttpStatus::INTERNAL_SERVER_ERROR);
   }
 
   /**
@@ -83,9 +84,9 @@ class UserController extends BaseController
   {
     $deleted = $this->respository->destroy($id);
     if ($deleted) {
-      return $this->jsonResponse($response, null, 204);
+      return $this->jsonResponse($response, null, HttpStatus::NO_CONTENT);
     }
 
-    return $this->jsonResponse($response, null, 500);
+    return $this->jsonResponse($response, null, HttpStatus::INTERNAL_SERVER_ERROR);
   }
 }

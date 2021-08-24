@@ -2,6 +2,7 @@
 
 namespace Mvc\Controller;
 
+use Mvc\Enums\HttpStatus;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
@@ -19,7 +20,7 @@ class BaseController
   /**
    * Returns php results in json
    */
-  protected function jsonResponse(Response $response, $data = null, int $status = 200)
+  protected function jsonResponse(Response $response, $data = null, int $status = HttpStatus::OK)
   {
     if ($data != null) {
       $response->getBody()->write(json_encode($data));
