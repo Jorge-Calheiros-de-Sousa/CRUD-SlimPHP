@@ -57,6 +57,7 @@ class UserController extends BaseController
     if ($created) {
       return $this->jsonResponse($response, null, 201);
     }
+    return $this->jsonResponse($response, null, 500);
   }
 
   /**
@@ -71,6 +72,8 @@ class UserController extends BaseController
     if ($updated) {
       return $this->jsonResponse($response, null, 202);
     }
+
+    return $this->jsonResponse($response, null, 500);
   }
 
   /**
@@ -82,5 +85,7 @@ class UserController extends BaseController
     if ($deleted) {
       return $this->jsonResponse($response, null, 204);
     }
+
+    return $this->jsonResponse($response, null, 500);
   }
 }
