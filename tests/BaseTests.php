@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Tests\Utils\TestContainers;
+use Tests\Utils\TestErrorContainers;
 
 class BaseTests extends TestCase
 {

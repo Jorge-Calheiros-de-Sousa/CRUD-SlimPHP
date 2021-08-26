@@ -6,11 +6,13 @@ use DI\Container;
 use Mvc\Model\UserModel;
 use Mvc\Repository\Contracts\UserRepositoryContracts;
 use Tests\Mocks\UserRepositoryMock;
+use Tests\Mocks\UserRepositoryErrorMock;
 
 class TestContainers
 {
   private const CONTAINERS_TO_MAKE = [
     UserRepositoryContracts::class => UserRepositoryMock::class,
+    "Error" => UserRepositoryErrorMock::class
   ];
 
   public static function init(Container $container)

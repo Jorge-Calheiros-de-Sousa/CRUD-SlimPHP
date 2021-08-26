@@ -34,6 +34,9 @@ class UserController extends BaseController
   public function list(Response $response)
   {
     $data = $this->respository->list();
+    if ($data == null) {
+      return $this->jsonResponse($response, $data, HttpStatus::NO_CONTENT);
+    }
     return $this->jsonResponse($response, $data);
   }
 
