@@ -22,11 +22,12 @@ class BaseController
    */
   protected function jsonResponse(Response $response, $data = null, int $status = HttpStatus::OK)
   {
+    $newResponse = $response;
     if ($data != null) {
       $response->getBody()->write(json_encode($data));
       $newResponse = $response->withHeader('Content-Type', 'application/json');
     }
-    $newResponse =  $response->withStatus($status);
+    $newResponse = $newResponse->withStatus($status);
 
     return $newResponse;
   }

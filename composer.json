@@ -5,8 +5,15 @@
       "Mvc\\": "mvc/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require-dev": {
-    "nunomaduro/phpinsights": "^2.0"
+    "nunomaduro/phpinsights": "^2.0",
+    "phpunit/phpunit": "^9.5",
+    "symfony/var-dumper": "^5.3"
   },
   "require": {
     "vlucas/phpdotenv": "^5.3",
@@ -14,6 +21,7 @@
     "slim/psr7": "^1.4",
     "slim/twig-view": "3.0",
     "gabordemooij/redbean": "^5.7",
-    "php-di/slim-bridge": "^3.1"
+    "php-di/slim-bridge": "^3.1",
+    "guzzlehttp/guzzle": "7.0"
   }
 }
