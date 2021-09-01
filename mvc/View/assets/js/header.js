@@ -1,4 +1,9 @@
 function header() {
+
+  if (localStorage.getItem('@token') == "none") {
+    window.location.href = url + "login/"
+  }
+
   if (localStorage.getItem('@token') == "null") {
     window.location.href = url + "login/"
   }
@@ -14,6 +19,11 @@ function header() {
 }
 
 function headerAdmin() {
+
+  if (localStorage.getItem('@token') == "none") {
+    window.location.href = url + "adm/"
+  }
+
 
   if (localStorage.getItem('@adm') == "null") {
     window.location.href = url + "adm/"

@@ -7,7 +7,6 @@ use DI\Container;
 use Mvc\Repository\Contracts\UserRepositoryContracts;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use tidy;
 
 class UserController extends BaseController
 {

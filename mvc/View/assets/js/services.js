@@ -5,7 +5,7 @@ function create(params) {
         alert("Cadastro feito com sucesso");
         window.location.href = url + "login/";
       } else {
-        alert("Já existe esse usuário");
+        console.log(response);
       }
     }).catch(function (response) {
       alert("Erro ao seu cadastrar tente denovo");
@@ -139,7 +139,7 @@ function editar_senha(dados) {
     })
 }
 function show_user() {
-  if (header().Authorization != "Bearer none") {
+  if (header().Authorization != "Bearer null") {
     get_jwt().then(function (response) {
       let user = JSON.parse(response.data.jwt[0]).user;
 
