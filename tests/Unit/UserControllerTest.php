@@ -18,6 +18,7 @@ class UserControllerTest extends BaseTests
 
   private UserController $controllerError;
 
+
   public function setUp(): void
   {
     parent::setUp();
@@ -34,11 +35,28 @@ class UserControllerTest extends BaseTests
   /**
    * @test
    */
+  public function shouldHeaderReturnValidResponse()
+  {
+    $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
+
+    $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
+
+    $response = $this->controller->header($request, $this->response);
+
+    $this->assertEquals([], $response->getHeader("jwt"));
+    $this->assertEquals(HttpStatus::OK, $response->getStatusCode());
+    $this->assertEquals("application/json", $response->getHeader("Content-Type")[0]);
+  }
+
+  /**
+   * @test
+   */
   public function shouldListReturnValidResponse()
   {
     $response = $this->controller->list($this->response);
 
     $this->assertEquals(HttpStatus::OK, $response->getStatusCode());
+    $this->assertEquals("application/json", $response->getHeader("Content-Type")[0]);
   }
 
   /**
@@ -48,33 +66,49 @@ class UserControllerTest extends BaseTests
   {
     $response = $this->controller->show($this->response, 1);
 
+
     $this->assertEquals(HttpStatus::OK, $response->getStatusCode());
+    $this->assertEquals("application/json", $response->getHeader("Content-Type")[0]);
   }
 
   /**
    * @test
    */
-  public function shouldCreateReturnValidResponse()
+  public function shouldUpdateNameValidResponse()
   {
     $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
 
     $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
 
-    $response = $this->controller->create($request, $this->response);
+    $response = $this->controller->update_user($request, $this->response, 1);
 
-    $this->assertEquals(HttpStatus::CREATED, $response->getStatusCode());
+    $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
   }
 
   /**
    * @test
    */
-  public function shouldUpdateValidResponse()
+  public function shouldUpdateEmailValidResponse()
   {
     $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
 
     $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
 
-    $response = $this->controller->update($request, $this->response, 1);
+    $response = $this->controller->update_email($request, $this->response, 1);
+
+    $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
+  }
+
+  /**
+   * @test
+   */
+  public function shouldUpdateSenhaValidResponse()
+  {
+    $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
+
+    $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
+
+    $response = $this->controller->update_senha($request, $this->response, 1);
 
     $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
   }
@@ -98,33 +132,6 @@ class UserControllerTest extends BaseTests
 
 
     $this->assertEquals(HttpStatus::NO_CONTENT, $response->getStatusCode());
-  }
-  /**
-   * @test
-   */
-  public function shouldCreateReturnErrorResponse()
-  {
-    $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
-
-    $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
-
-    $response = $this->controllerError->create($request, $this->response);
-
-    $this->assertEquals(HttpStatus::INTERNAL_SERVER_ERROR, $response->getStatusCode());
-  }
-
-  /**
-   * @test
-   */
-  public function shouldUpdateErrorResponse()
-  {
-    $fixtureFile = __DIR__ . "/../fixtures/createNewUser.json";
-
-    $request = (new RequestMock("POST", "api/v1/users", $fixtureFile))->getInstance();
-
-    $response = $this->controllerError->update($request, $this->response, 1);
-
-    $this->assertEquals(HttpStatus::INTERNAL_SERVER_ERROR, $response->getStatusCode());
   }
 
   /**

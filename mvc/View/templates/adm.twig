@@ -1,0 +1,40 @@
+{% extends "layouts/default.twig"  %}
+
+{% block title %}
+  Admin
+{% endblock %}
+
+
+
+{% block content %}
+<script>
+  headerAdmin();
+</script>
+<div class="container-adm">
+    <div class="container-table">
+    <div class="basic_information">
+      <h2>Usuários cadastrados</h2>
+    </div>
+        <table>
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody id="tbody">
+       
+      </tbody>
+    </table>
+  </div>
+  <div class="content_btns">
+    <button class="btn btn-second" id="logout">
+      Log out
+    </button>
+  </div>
+</div>
+<script>
+  list();
+  logout("logout", "@adm", null,  url + "adm/home/");
+</script>
+{% endblock %}

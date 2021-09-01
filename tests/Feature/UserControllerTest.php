@@ -8,37 +8,46 @@ use Tests\BaseTests;
 class UserControllerTest extends BaseTests
 {
 
+  private array $headers;
+
+  public function setUp(): void
+  {
+    parent::setUp();
+
+    $token = $this->fakeAuth();
+
+    $this->headers = ["Authorization" => "Bearer " . $token["token"]];
+  }
   /**
    * @test
    */
-  public function shouldReturnListOfUsers()
+  public function shouldReturnHeaderOfUser()
   {
-    $response = $this->request("GET", "api/v1/users");
+    $response = $this->request("GET", "api/v1/users", null, $this->headers);
 
+    $this->assertStringContainsString("jwt", $response->getBody()->getContents(), "not found");
     $this->assertEquals(HttpStatus::OK, $response->getStatusCode());
-    $this->assertEquals("application/json", $response->getHeader("Content-Type")[0]);
   }
 
   /**
    * @test
    */
-  public function shouldReturnShowOfUsers()
+  public function shouldReturnShowUsers()
   {
-    $response = $this->request("GET", "api/v1/users/5");
+    $response = $this->request("GET", "api/v1/users/Jorge Calheiros de Sousa", null, $this->headers);
 
     $this->assertEquals(HttpStatus::OK, $response->getStatusCode());
-    $this->assertEquals("application/json", $response->getHeader("Content-Type")[0]);
+    $this->assertStringContainsString("user", $response->getBody()->getContents(), "not found");
   }
-
   /**
    * @test
    */
-  public function shouldReturnUpdateOfUsers()
+  public function shouldReturnUpdateNameOfUser()
   {
-    $response = $this->request("PUT", "api/v1/users/5", [
-      "Name" => "teste",
-      "YearOld" => "12"
-    ]);
+    $response = $this->request("PUT", "api/v1/users/editar-nome/3", [
+      "nome" => "teste",
+      "senha" => "fulano"
+    ], $this->headers);
 
     $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
   }
@@ -46,14 +55,27 @@ class UserControllerTest extends BaseTests
   /**
    * @test
    */
-  public function shouldReturnCreateOfUsers()
+  public function shouldReturnUpdateEmailOfUser()
   {
-    $response = $this->request("POST", "api/v1/users", [
-      "Name" => "Criado",
-      "YearOld" => "12"
-    ]);
+    $response = $this->request("PUT", "api/v1/users/editar-email/3", [
+      "email" => "teste@teste.com",
+      "senha" => "123456"
+    ], $this->headers);
 
-    $this->assertEquals(HttpStatus::CREATED, $response->getStatusCode());
+    $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
+  }
+
+  /**
+   * @test
+   */
+  public function shouldReturnUpdateSenhaOfUser()
+  {
+    $response = $this->request("PUT", "api/v1/users/editar-senha/3", [
+      "senhaNova" => "jorge2",
+      "senha" => "123456"
+    ], $this->headers);
+
+    $this->assertEquals(HttpStatus::ACCEPTED, $response->getStatusCode());
   }
 
   /**
@@ -63,6 +85,6 @@ class UserControllerTest extends BaseTests
   {
     $response = $this->request("GET", "/CRUD-SlimPHP/");
 
-    $this->assertStringContainsString("Cadastrar usuario", $response->getBody()->getContents(), "not found");
+    $this->assertStringContainsString("Slim PHP", $response->getBody()->getContents(), "not found");
   }
 }

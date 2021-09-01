@@ -1,0 +1,50 @@
+{% extends "layouts/default.twig"  %}
+
+{% block title %}
+  CRUD
+{% endblock %}
+
+{% block content %}
+<div class="content firts-contentens">
+  <div class="firts-column">
+    <h2 class="title title-welcome">Bem vindo</h2>
+    <br>
+    <p class="description description-primary"> Caso ainda não tenha uma conta<br>junte-se a nós e cadastre-se</p>
+    <br>
+    <button class="btn btn-primary" id="cadastrar">Cadastrar</button>
+  </div>
+  <div class="second-column">
+    <h2 class="title title-second">Login</h2>
+    <div class="social_midia">
+      <ul class="ul-social-midia">
+        <a href="#">
+             <li><i class="fab fa-facebook"></i></li>
+        </a>
+        <a href="#">
+             <li><i class="fab fa-google"></i></li>
+        </a>
+        <a href="#">
+             <li><i class="fab fa-linkedin-in"></i></li>
+        </a>
+      </ul>
+    </div>
+    <p class="description description-second"> Fassa o seu login </p>
+    <form action="#" method="post" class="form" onsubmit = "return validar_login()">
+
+      <label class = "label-input" for="">
+      <i class="fas fa-users icons"></i>
+        <input type="text" name="name" id="Name" placeholder="Name" autocomplete="off">
+      </label>
+
+      <label  class = "label-input" for="">
+      <i class="fas fa-key icons"></i>
+        <input type="password" name="password" id="Senha" autocomplete="off" placeholder="Senha">
+      </label>
+      <button class="btn btn-second">Login</button>
+    </form>
+  </div>
+</div>
+<script>
+  redirect_listeners(["cadastrar"],["cadastro/"]);
+</script>
+{% endblock %}

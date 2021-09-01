@@ -30,10 +30,24 @@ abstract class AbstractRepository
     return R::store($bean) > 0;
   }
 
-  public function update($id, ModelContract $modelContract): bool
+  public function update_name($id, ModelContract $modelContract): bool
   {
     $bean = R::load($this->table, $id);
-    $bean = $this->fillData($bean, $modelContract);
+    $bean = $this->fillDataUser($bean, $modelContract);
+    return R::store($bean) > 0;
+  }
+
+  public function update_email($id, ModelContract $modelContract): bool
+  {
+    $bean = R::load($this->table, $id);
+    $bean = $this->fillDataEmail($bean, $modelContract);
+    return R::store($bean) > 0;
+  }
+
+  public function update_password($id, ModelContract $modelContract): bool
+  {
+    $bean = R::load($this->table, $id);
+    $bean = $this->fillDataPassword($bean, $modelContract);
     return R::store($bean) > 0;
   }
 
@@ -48,16 +62,37 @@ abstract class AbstractRepository
     }
   }
 
-  public function list($id = null): array
+  public function list($user = null): array
   {
-    $where = $id ? " WHERE id = :ID" : "";
-    $binds = $id ? [":ID" => $id] : [];
+    $where = $user ? " WHERE user = :user and tipo = 2" : " WHERE tipo = 2";
+    $binds = $user ? [":user" => $user] : [];
     return R::beansToArray(R::findAll($this->table, $where, $binds));
   }
 
   private function fillData(OODBBean $bean, ModelContract $model)
   {
-    foreach ($model->getData() as $key => $value) {
+    foreach ($model->getDataAll() as $key => $value) {
+      $bean->$key = $value;
+    }
+    return $bean;
+  }
+  private function fillDataUser(OODBBean $bean, ModelContract $model)
+  {
+    foreach ($model->getDataUser() as $key => $value) {
+      $bean->$key = $value;
+    }
+    return $bean;
+  }
+  private function fillDataEmail(OODBBean $bean, ModelContract $model)
+  {
+    foreach ($model->getDataEmail() as $key => $value) {
+      $bean->$key = $value;
+    }
+    return $bean;
+  }
+  private function fillDataPassword(OODBBean $bean, ModelContract $model)
+  {
+    foreach ($model->getDataPassword() as $key => $value) {
       $bean->$key = $value;
     }
     return $bean;

@@ -22,6 +22,7 @@
     "slim/twig-view": "3.0",
     "gabordemooij/redbean": "^5.7",
     "php-di/slim-bridge": "^3.1",
-    "guzzlehttp/guzzle": "7.0"
+    "guzzlehttp/guzzle": "7.0",
+    "firebase/php-jwt": "^5.4"
   }
 }

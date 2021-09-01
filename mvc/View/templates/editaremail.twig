@@ -1,0 +1,54 @@
+{% extends "layouts/default.twig"  %}
+
+{% block title %}
+  Editar email
+{% endblock %}
+
+{% block content %}
+<script>
+  header();
+</script>
+  <div class="content_editar">
+   <div class="head">
+      <button class="icon-back" id="back"><i class="fas fa-backward"></i></button>
+      <h2 class="title">Email</h2>
+    </div>
+    <hr>
+  <div class="contaienr_description">
+    <p class="description description-second">Altere o seu email</p>
+  </div>
+
+  <div class="container_form">
+    <form action="#" autocomplete="off" onsubmit="return validar_email_editar()" class="form_editar">
+      <p>ALTERAR EMAIL</p>
+      <div class="inputs">
+        <label for="">
+            <fieldset>
+             <legend>Email</legend>
+             <input type="email" name="" id="email" value="">
+            </fieldset>
+        </label>
+         <label for="">
+            <fieldset>
+             <legend>Senha</legend>
+             <input type="password" name="senha" id="senha" value="">
+            </fieldset>
+        </label>
+      </div>
+      <div class="btns_editar">
+        <button class="btn btn_cacelar" id="cacelar" type="button">
+          Cancelar
+        </button>
+        <button class="btn btn_salvar">
+          Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  list_user_edit();
+  redirect_listeners(["back"],[""]);
+  redirect_listeners(["cacelar"],[""]);
+</script>
+{% endblock %}  

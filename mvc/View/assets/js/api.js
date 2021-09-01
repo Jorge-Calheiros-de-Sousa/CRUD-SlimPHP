@@ -1,7 +1,8 @@
-function makeRequest(URL, metodo, dados) {
+function makeRequest(URL, metodo, data, header) {
   return axios({
     method: metodo,
     url: URL,
-    ...dados
+    ...data,
+    ...header
   });
 }

@@ -2,52 +2,76 @@
 
 namespace Mvc\Model;
 
-
-
 class UserModel implements ModelContract
 {
   private ?int $id = null;
-  private string $name;
-  private int $yearOld;
+  private string $user;
+  private string $email;
+  private string $passsword;
+  private const TYPE_USER = 2;
 
-  public function getId(): int
+  public function getId()
   {
     return $this->id;
   }
 
-  public function setId(?int $id): self
+  public function getUser()
   {
-    $this->id = $id;
+    return $this->user;
+  }
+  public function setUser($user)
+  {
+    $this->user = $user;
     return $this;
   }
 
-  public function getName(): string
+  public function getEmail()
   {
-    return $this->name;
+    return $this->email;
   }
-
-  public function setName(string $name): self
+  public function setEmail($email)
   {
-    $this->name = $name;
+    $this->email = $email;
     return $this;
   }
 
-  public function getYearOld(): int
+  public function getPassword()
   {
-    return $this->yearOld;
+    return $this->passsword;
   }
-
-  public function setYearOld(string $yearOld): self
+  public function setPassword($pass)
   {
-    $this->yearOld = $yearOld;
+    $this->passsword = $pass;
     return $this;
   }
 
-  public function getData(): array
+  public function getDataAll(): array
   {
     return [
-      "name" => $this->name,
-      "yearOld" => $this->yearOld
+      "user" => $this->user,
+      "email" => $this->email,
+      "password" => $this->passsword,
+      "tipo" => UserModel::TYPE_USER,
+    ];
+  }
+
+  public function getDataUser(): array
+  {
+    return [
+      "user" => $this->user
+    ];
+  }
+
+  public function getDataEmail(): array
+  {
+    return [
+      "email" => $this->email
+    ];
+  }
+  public function getDataPassword(): array
+  {
+    return [
+      "password" => $this->passsword
     ];
   }
 }

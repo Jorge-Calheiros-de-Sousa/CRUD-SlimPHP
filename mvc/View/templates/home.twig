@@ -1,40 +1,62 @@
 {% extends "layouts/default.twig"  %}
 
 {% block title %}
-  CRUD
+  Home
+{% endblock %}
+
+{% block header %}
+  <script src="{{ baseURL }}mvc/View/assets/js/header.js"></script>
 {% endblock %}
 
 {% block content %}
-<div class="container">
-  <form action="#" id="form" method="post" onsubmit="return validation('c',0)">
-    <div class="titulo">
-      <h1 id='title'>Cadastrar usuario</h1>
-    </div>
-    <div>
-      <input type="text" name="name" id="name" autocomplete="off" placeholder="Digite seu nome" maxlength="30">
-    </div>
-    <div>
-      <input type="number" name="year" id="year" autocomplete="off" placeholder="Digite sua idade" min="1"
-        max="120">
-    </div>
-    <div class="submit">
-      <input type="submit" value="Enviar" class="submit" id='submit'>
-    </div>
-  </form>
-  <div class="list">
-    <table>
-      <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Idade</th>
-          <th>Editar</th>
-          <th>Excluir</th>
-        </tr>
-      </thead>
-      <tbody id='tb'>
+<script>
+  header();
+</script>
+<div class="container_user">
+  <div class="user">
+    <div class="head">
+      <figure class="icon">
 
-      </tbody>
-    </table>
+      </figure>
+      <h2 class="title">Bem vindo <div id="user_title"></div></h2>
+    </div>
+    <p class="description">Gerencie suas informações</p>
+    <button class="btn btn-second" id="info">Informações pessoais</button>
   </div>
 </div>
+<div class="container_info" id="container_info">
+  <button class ="icon-back" id="back"><i class="fas fa-backward"></i></button>
+  <div class= "container-table">
+    <div class="basic_information">
+     <h2>Informações básicas</h2>
+    </div>
+    <table>
+      <tr>
+        <th>Name:</th>
+        <td id="td_user"></td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td id="td_email"></td>
+      </tr>
+      <tr>
+        <th>Senha:</th>
+        <td id="td_password">********</td>
+      </tr>
+    </table>
+  </div>
+  <div class="content_btns">
+    <button class="btn btn_excluir" id="excluir">
+      Excluir
+    </button>
+    <button class="btn btn-second" id="logout">
+      Log out
+    </button>
+  </div>
+</div>
+<script>
+  show_user();
+  element_display("info", document.getElementById("container_info"),"block");
+  element_display("back", document.getElementById("container_info"),"none");
+</script>
 {% endblock %}

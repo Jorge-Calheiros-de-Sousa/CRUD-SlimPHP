@@ -13,7 +13,17 @@ class UserRepositoryErrorMock implements UserRepositoryContracts
     return false;
   }
 
-  public function update($id, ModelContract $modelContract): bool
+  public function update_name($id, ModelContract $modelContract): bool
+  {
+    return false;
+  }
+
+  public function update_email($id, ModelContract $modelContract): bool
+  {
+    return false;
+  }
+
+  public function update_password($id, ModelContract $modelContract): bool
   {
     return false;
   }
@@ -26,5 +36,22 @@ class UserRepositoryErrorMock implements UserRepositoryContracts
   public function destroy($id): bool
   {
     return false;
+  }
+  public function auth(string $user, string $password)
+  {
+    throw new \Exception();
+
+    return false;
+  }
+
+  public function authAdmin(string $user, string $password)
+  {
+    throw new \Exception();
+
+    return false;
+  }
+
+  public function verifik_user(string $user)
+  {
   }
 }

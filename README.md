@@ -35,7 +35,7 @@ Tecnologias usadas:
     |DB_USERNAME     |root          |
     |DB_PASSWORD      |''         |
 
-- E agora é só usar a aplicação
+- PS: para a aplicação rodar veja as **observações** abaixo.
 
 ------
 
@@ -63,18 +63,10 @@ Tecnologias usadas:
     |DB_USERNAME     |root         |
     |DB_PASSWORD     |123         |
 
-- Crie o banco de dados acessando o phpmyadmin por [http://localhost:8000](http://localhost:8000) e insira as informações `Ultilizador: root` e `Senha: 123`
-- Em dbusuarios crie uma tabela chamada `tbusuarios` com 3 colunas e depois insira as informações abaixo:
+- Agora crie as tabelas do banco de dados da aplicação acessando o phpmyadmin http://localhost:8000 ou pelo MySQL, quando for acessar pelo o phpmyadmin insira as seguintes informações `Ultilizador: root` e `Senha: 123`, caso for entrar pelo MySQL apenas insira a Senha: `123`
+- Agora de acordo com o arquivo `dbusuarios.sql` crie as tabelas.
 
-
-    |Nome  |Tipo  |Tamanho/Valores  |A_I(Auto_increment)  |
-    |---------|---------|---------|---------|
-    |id   |int         |         |check         |
-    |name    |varchar         |75         |         |
-    |year_old     |varchar         |3         |         |
-
-- Clique em guardar e a tabela será criada
-- Pronto agora a aplicação já esta executando
+- PS: para a aplicação rodar veja as **observações** abaixo.
 
 ## Portas da aplicação
 
@@ -99,19 +91,31 @@ Quando copiar o arquivo .env.example e renomear para .env deve se preencher algu
 |APP_ENV     |DEV ou PROD            |
 |APP_URL     |(coloque a URL da aplicação)         |
 |APP_BASE_ROUTE     |(coloque a rota da aplicação)         |
+|JWT_SECRET    |(qualquer texto)            |
 
 
+  A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.   
+        As possibilidades desse variavel são: 
+        
+        "DEV": Ambiente de desenvolvimento
+        
+        "PROD": Ambiente de produção
 
-- A variável "APP_ENV" representa o ambiente onde a aplicação está executando, alterar essa variável pode alterar alguns comportamentos, como por exemplo, exibir ou ocultar mensagens para desenvolvedores.
 
-    As possibilidades desse variavel são: 
-    
-    "DEV": Ambiente de desenvolvimento
-    
-    "PROD": Ambiente de produção
+Em APP_URL e APP_BASE_ROUTE é preciso colocar a rota e a url da aplicação porque certas funcionalidades dependem dessas informações na aplicação. Isso acontece porque o sistema támbem funciona no docker então quando ele é executado em docker a URL e a rota mudam então é preciso que o desenvolvedor insira a URL e a rota atual dependêndo de onde a aplicação está sendo executada. (Xampp ou Docker)
 
-- Em APP_URL e APP_BASE_ROUTE é preciso colocar a rota e a url da aplicação porque certas funcionalidades dependem dessas informações na aplicação. Isso acontece porque o sistema támbem funciona no docker então quando ele é executado em docker a URL e a rota mudam então é preciso que o desenvolvedor insira a URL e a rota atual dependêndo de onde a aplicação está sendo executada. (Xampp ou Docker)
+Em JWT_SECRET é necessário colocar alguma string porque ele é usado para criptografar as informações em hash
 
+-----
+
+## Parte de Admin da aplicação
+
+     Na parte de Admin da aplicação é possivel visualizar todos os usuários cadastrados na tabela.
+### Passo a passo de como ser um admin
+
+- No banco de dados na tabela tbusuarios criei um usuário com o nome, email e senha de sua escolha e na coluna tipo insira o numero 2
+- Acesse a aplicação e acrescente na URL `/adm` e você ira ser redirecionado para uma tela de login de Admin e agora é só inserir o usuário que já tinha sido cadastrado.
+-----
 ## Comandos do docker
 
 |Comando |Descrição |

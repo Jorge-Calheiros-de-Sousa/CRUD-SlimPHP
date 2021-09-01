@@ -1,0 +1,57 @@
+{% extends "layouts/default.twig"  %}
+
+{% block title %}
+  CRUD
+{% endblock %}
+
+{% block content %}
+<div class="content firts-contentens">
+  <div class="firts-column">
+    <h2 class="title title-welcome">Seja bem vindo</h2>
+    <br>
+    <p class="description description-primary"> Fassa login se você ja tem uma conta </p>
+    <br>
+    <button class="btn btn-primary" id="login">Login</button>
+  </div>
+  <div class="second-column">
+    <h2 class="title title-second">Criar uma conta</h2>
+    <div class="social_midia">
+      <ul class="ul-social-midia">
+        <a href="#">
+             <li><i class="fab fa-facebook"></i></li>
+        </a>
+        <a href="#">
+             <li><i class="fab fa-google"></i></li>
+        </a>
+        <a href="#">
+             <li><i class="fab fa-linkedin-in"></i></li>
+        </a>
+      </ul>
+    </div>
+    <p class="description description-second"> Crei a sua conta </p>
+    <form action="#" method="post" class="form" onsubmit=" return validar_cadastro()">
+
+      <label class = "label-input" for="">
+      <i class="fas fa-users icons"></i>
+        <input type="text" name="name" id="Name" placeholder="Name" autocomplete="off">
+      </label>
+      <label  class = "label-input" for="">
+      <i class="fas fa-envelope-square icons"></i>
+       <input type="email" name="email" id="Email" autocomplete="off" placeholder="Email">
+      </label>
+      <label  class = "label-input" for="">
+      <i class="fas fa-key icons"></i>
+        <input type="password" name="password" id="Senha" autocomplete="off" placeholder="Senha">
+      </label>
+       <label  class = "label-input" for="">
+      <i class="fas fa-key icons"></i>
+        <input type="password" name="reppassword" id="RepSenha" autocomplete="off" placeholder="Repita a senha">
+      </label>
+      <button class="btn btn-second">Cadastrar</button>
+    </form>
+  </div>
+</div>
+<script>
+  redirect_listeners(["login"],["login/"]);
+</script>
+{% endblock %}
