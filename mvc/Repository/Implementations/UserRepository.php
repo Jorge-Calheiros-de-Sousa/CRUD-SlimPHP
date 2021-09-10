@@ -76,7 +76,7 @@ class UserRepository extends AbstractRepository implements UserRepositoryContrac
         throw new \Exception();
       }
 
-      if ($password != $user[0]["password"]) {
+      if (!password_verify($password, $user[0]["password"])) {
         throw new \Exception();
       }
 

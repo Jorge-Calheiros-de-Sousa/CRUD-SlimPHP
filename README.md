@@ -113,7 +113,9 @@ Em JWT_SECRET é necessário colocar alguma string porque ele é usado para crip
      Na parte de Admin da aplicação é possivel visualizar todos os usuários cadastrados na tabela.
 ### Passo a passo de como ser um admin
 
-- No banco de dados na tabela tbusuarios criei um usuário com o nome, email e senha de sua escolha PS: a senha tem que conter mais de 4 caracteres, depois na coluna tipo insira o numero 1
+- No banco de dados criei um usuário com o nome e email
+- No campo de senha para gerar uma senha hash basta acessar o terminal e digitar `php GenerateHash.php` que altomaticamente vai transformar a senha 12345678 em hash, depois disso basta copiar o hash e colocar no BD
+- No ultimo campo tipo basta colocar o numero 1
 - Acesse a aplicação e acrescente na URL `/adm/` e você ira ser redirecionado para uma tela de login de Admin e agora é só inserir o usuário que já tinha sido cadastrado.
 -----
 ## Comandos do docker
