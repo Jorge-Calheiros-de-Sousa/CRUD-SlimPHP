@@ -69,8 +69,6 @@ class AuthControllerTest extends BaseTests
       "senha" => "teste"
     ]);
 
-    dd($response->getStatusCode());
-
     $this->assertEquals(HttpStatus::CREATED, $response->getStatusCode());
   }
 }

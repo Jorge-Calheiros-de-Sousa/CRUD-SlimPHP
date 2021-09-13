@@ -83,8 +83,8 @@ class AuthController extends BaseController
 
     $created = $this->respository->create($model);
 
-    if ($created) {
-      return $this->jsonResponse($response, null, HttpStatus::CREATED);
+    if ($created > 0) {
+      return $this->jsonResponse($response, $created, HttpStatus::CREATED);
     }
     return $this->jsonResponse($response, null, HttpStatus::INTERNAL_SERVER_ERROR);
   }

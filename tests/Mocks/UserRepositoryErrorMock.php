@@ -53,5 +53,11 @@ class UserRepositoryErrorMock implements UserRepositoryContracts
 
   public function verifik_user(string $user)
   {
+    return false;
+  }
+
+  public function verifik_password(int $id, string $password)
+  {
+    return false;
   }
 }

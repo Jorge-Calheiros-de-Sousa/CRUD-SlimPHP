@@ -57,4 +57,9 @@ class UserRepositoryMock implements UserRepositoryContracts
   {
     return true;
   }
+
+  public function verifik_password(int $id, string $password)
+  {
+    return true;
+  }
 }

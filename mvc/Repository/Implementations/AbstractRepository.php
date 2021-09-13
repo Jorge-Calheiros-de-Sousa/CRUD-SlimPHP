@@ -27,7 +27,7 @@ abstract class AbstractRepository
   {
     $bean = R::dispense($this->table);
     $bean = $this->fillData($bean, $modelContract);
-    return R::store($bean) > 0;
+    return R::store($bean);
   }
 
   public function update_name($id, ModelContract $modelContract): bool
